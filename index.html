@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>児島由加山 駐車場整備構想 — 公式情報サイト</title>
+  <meta name="description" content="岡山県倉敷市児島・由加山地区における駐車場整備構想の公式情報サイト。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:        #1b2f5e;
+      --navy-deep:   #132248;
+      --navy-mid:    #263c72;
+      --navy-light:  #e8edf6;
+      --navy-pale:   #f2f5fb;
+      --gold:        #b8922a;
+      --gold-light:  #d4a83a;
+      --gold-pale:   #fdf8ee;
+      --gold-border: #e8ce82;
+      --red-notice:  #c0392b;
+      --text:        #1a1a1a;
+      --text-mid:    #444;
+      --text-sub:    #666;
+      --border:      #c8cdd8;
+      --border-light:#e0e4ef;
+      --white:       #ffffff;
+      --bg:          #f5f6f8;
+      --serif: "Noto Serif JP", "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN", serif;
+      --sans:  "Noto Sans JP", "游ゴシック", "Yu Gothic", "ヒラギノ角ゴ ProN", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      color: var(--text);
+      background: var(--bg);
+      font-size: 14px;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--navy); text-decoration: none; }
+    a:hover { text-decoration: underline; color: var(--navy-mid); }
+    img { max-width: 100%; display: block; }
+    ul, ol { list-style: none; }
+
+    .inner {
+      width: min(calc(100% - 32px), 1040px);
+      margin: 0 auto;
+    }
+
+    /* ── Utility strip ── */
+    .util-bar {
+      background: var(--navy-deep);
+      color: rgba(255,255,255,0.7);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      padding: 5px 0;
+    }
+    .util-bar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .util-links { display: flex; gap: 20px; }
+    .util-links a { color: rgba(255,255,255,0.6); }
+    .util-links a:hover { color: #fff; text-decoration: none; }
+
+    /* ── Site header ── */
+    .site-header {
+      background: var(--navy);
+      border-bottom: 3px solid var(--gold);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      display: flex;
+      align-items: stretch;
+      height: 68px;
+    }
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-right: 28px;
+      border-right: 1px solid rgba(255,255,255,0.12);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .header-logo:hover { text-decoration: none; }
+    .logo-crest {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid var(--gold-border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-crest svg { width: 26px; height: 26px; color: var(--gold-light); }
+    .logo-texts { display: flex; flex-direction: column; gap: 1px; }
+    .logo-ja {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.06em;
+      line-height: 1.2;
+    }
+    .logo-en {
+      font-size: 10px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .header-nav {
+      display: flex;
+      flex: 1;
+      align-items: stretch;
+    }
+    .header-nav a {
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      color: rgba(255,255,255,0.78);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .header-nav a:hover { background: rgba(255,255,255,0.07); color: #fff; text-decoration: none; }
+    .header-nav a.nav-cta {
+      background: var(--gold);
+      color: #fff;
+      font-weight: 700;
+      margin-left: auto;
+      padding: 0 24px;
+      border-right: none;
+    }
+    .header-nav a.nav-cta:hover { background: var(--gold-light); }
+
+    /* ── Notice strip ── */
+    .notice-strip {
+      background: var(--gold-pale);
+      border-bottom: 2px solid var(--gold-border);
+      padding: 10px 0;
+    }
+    .notice-strip-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .notice-label {
+      flex-shrink: 0;
+      background: var(--red-notice);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 2px 10px;
+      border-radius: 2px;
+      margin-top: 2px;
+    }
+    .notice-text {
+      font-size: 13px;
+      color: #5a3b00;
+      line-height: 1.65;
+    }
+    .notice-text strong { color: var(--red-notice); }
+
+    /* ── Breadcrumb ── */
+    .breadcrumb {
+      background: var(--white);
+      border-bottom: 1px solid var(--border-light);
+      padding: 8px 0;
+    }
+    .breadcrumb ol {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+    .breadcrumb li::before { content: "＞"; opacity: 0.45; }
+    .breadcrumb li:first-child::before { content: ""; }
+    .breadcrumb a { color: var(--navy); }
+
+    /* ── Page hero ── */
+    .page-hero {
+      background: linear-gradient(105deg, var(--navy-deep) 0%, var(--navy) 50%, #1e3d7b 100%);
+      padding: 52px 0 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      top: 0; right: 0;
+      width: 52%;
+      height: 100%;
+      background: url('https://yugasan.or.jp/wp-content/uploads/footer-img-min.jpg') center/cover no-repeat;
+      opacity: 0.9;
+    }
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent 80%);
+    }
+    .page-hero-inner { position: relative; z-index: 2; }
+    .page-hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .page-hero-tag::before {
+      content: "";
+      width: 20px;
+      height: 1.5px;
+      background: var(--gold);
+    }
+    .page-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3.2vw, 38px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .page-hero-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.72);
+      max-width: 580px;
+      line-height: 1.95;
+    }
+    .page-hero-meta {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      border-radius: 2px;
+    }
+    .meta-badge.phase {
+      background: rgba(196,148,62,0.18);
+      border: 1px solid rgba(196,148,62,0.4);
+      color: #f0d68c;
+    }
+    .meta-badge.date {
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── Page body ── */
+    .page-body { padding: 36px 0 64px; }
+    .page-layout {
+      display: grid;
+      grid-template-columns: 1fr 276px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* ── Section boxes ── */
+    .section-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .section-box:last-child { margin-bottom: 0; }
+
+    .box-header {
+      background: var(--navy);
+      padding: 11px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .box-header h2 {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.06em;
+    }
+    .box-header .box-en {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-left: auto;
+    }
+    .box-header-gold { background: var(--gold); }
+
+    .box-body { padding: 22px 24px; }
+
+    /* ── Concept table ── */
+    .concept-table { width: 100%; border-collapse: collapse; }
+    .concept-table td {
+      padding: 15px 16px;
+      border: 1px solid var(--border-light);
+      vertical-align: top;
+    }
+    .concept-num {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--navy);
+      text-align: center;
+      width: 52px;
+      border-right: 2px solid var(--navy-light) !important;
+    }
+    .concept-head {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 7px;
+      padding-bottom: 6px;
+      border-bottom: 1px dotted var(--border);
+    }
+    .concept-body { font-size: 13px; color: var(--text-mid); line-height: 1.85; }
+
+    /* ── Reason list ── */
+    .reason-item {
+      display: flex;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .reason-item:last-child { border-bottom: none; }
+    .reason-num {
+      flex-shrink: 0;
+      width: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: #fff;
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .reason-content { padding: 15px 18px; flex: 1; }
+    .reason-title {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+    .reason-desc { font-size: 13px; color: var(--text-mid); line-height: 1.82; }
+
+    /* ── News table ── */
+    .news-table { width: 100%; border-collapse: collapse; }
+    .news-table tr { border-bottom: 1px solid var(--border-light); }
+    .news-table tr:last-child { border-bottom: none; }
+    .news-table tr:hover { background: var(--navy-pale); }
+    .news-table td { padding: 11px 14px; font-size: 13px; vertical-align: middle; }
+    .news-date-cell {
+      white-space: nowrap;
+      color: var(--text-sub);
+      font-variant-numeric: tabular-nums;
+      width: 112px;
+    }
+    .news-tag-cell { width: 76px; text-align: center; }
+    .tag {
+      display: inline-block;
+      padding: 2px 9px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      border-radius: 2px;
+    }
+    .tag-concept { background: #ddeedd; color: #1a6b34; border: 1px solid #aadabb; }
+    .tag-meeting { background: #dce4f5; color: #1a3a7e; border: 1px solid #aabde6; }
+    .tag-info    { background: #fdf1dc; color: #7a4e00; border: 1px solid #e8ce82; }
+    .news-title-cell a { color: var(--text); }
+    .news-title-cell a:hover { color: var(--navy); text-decoration: underline; }
+    .news-arrow { color: var(--navy); font-size: 12px; width: 20px; }
+    .more-link-row {
+      text-align: right;
+      padding: 9px 14px;
+      border-top: 1px solid var(--border-light);
+      font-size: 12px;
+    }
+    .more-link { color: var(--navy); font-weight: 700; }
+    .more-link:hover { text-decoration: underline; }
+
+    /* ── Report list ── */
+    .report-item {
+      display: flex;
+      gap: 14px;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border-light);
+      align-items: flex-start;
+    }
+    .report-item:last-child { border-bottom: none; }
+    .report-icon {
+      flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+      background: var(--navy-pale);
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .report-icon svg { width: 22px; height: 22px; color: var(--navy); }
+    .report-meta-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .report-date { font-size: 11px; color: var(--text-sub); }
+    .report-cat {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--navy);
+      background: var(--navy-pale);
+      padding: 1px 8px;
+      border: 1px solid var(--border-light);
+    }
+    .report-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+    .report-desc { font-size: 12px; color: var(--text-sub); line-height: 1.72; }
+
+    /* ── Phase / Timeline table ── */
+    .phase-note {
+      padding: 11px 20px;
+      background: var(--navy-pale);
+      border-bottom: 1px solid var(--border-light);
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+    .phase-note strong { color: var(--gold); }
+    .phase-table { width: 100%; border-collapse: collapse; }
+    .phase-table tr { border-bottom: 1px solid var(--border-light); }
+    .phase-table tr:last-child { border-bottom: none; }
+    .phase-table td { padding: 15px 16px; vertical-align: top; }
+    .phase-num-cell {
+      width: 96px;
+      text-align: center;
+      border-right: 2px solid var(--border-light) !important;
+    }
+    .phase-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      margin-bottom: 5px;
+    }
+    .phase-badge {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: #fff;
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 16px;
+      border-radius: 50%;
+    }
+    .phase-badge.active { background: var(--gold); }
+    .phase-status { font-size: 10px; margin-top: 6px; font-weight: 700; }
+    .status-active { color: var(--gold); }
+    .status-future { color: var(--text-sub); }
+    .phase-row-active { background: #fffcf2; }
+    .phase-title {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .phase-desc { font-size: 13px; color: var(--text-mid); line-height: 1.82; }
+
+    /* ── Access ── */
+    .access-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .access-cell {
+      padding: 18px 20px;
+      border-right: 1px solid var(--border-light);
+    }
+    .access-cell:last-child { border-right: none; }
+    .access-cell-title {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 9px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .access-cell-title svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .access-cell p { font-size: 13px; color: var(--text-mid); line-height: 1.85; }
+
+    /* ── Sidebar ── */
+    .sidebar { display: flex; flex-direction: column; gap: 18px; }
+    .side-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+    }
+    .side-box-hd {
+      background: var(--navy-light);
+      padding: 9px 14px;
+      border-bottom: 2px solid var(--navy);
+    }
+    .side-box-hd h3 {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy-deep);
+      letter-spacing: 0.04em;
+    }
+    .side-box-bd { padding: 14px; }
+
+    .upcoming-item {
+      padding: 10px 0;
+      border-bottom: 1px dotted var(--border-light);
+    }
+    .upcoming-item:last-child { border-bottom: none; }
+    .upcoming-date { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .upcoming-title { font-size: 12px; color: var(--text); line-height: 1.55; }
+
+    .access-dl { font-size: 13px; }
+    .access-dl dt {
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 11px;
+      margin-bottom: 2px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .access-dl dt:first-child { margin-top: 0; }
+    .access-dl dd {
+      color: var(--text-mid);
+      line-height: 1.8;
+      font-size: 13px;
+      padding-left: 10px;
+      border-left: 2px solid var(--navy-light);
+    }
+
+    .quick-links { display: flex; flex-direction: column; }
+    .quick-links a {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 0;
+      font-size: 13px;
+      color: var(--text);
+      border-bottom: 1px dotted var(--border-light);
+      text-decoration: none;
+    }
+    .quick-links a:last-child { border-bottom: none; }
+    .quick-links a::before { content: "▶"; font-size: 9px; color: var(--gold); flex-shrink: 0; }
+    .quick-links a:hover { color: var(--navy); text-decoration: underline; }
+
+    .contact-card {
+      background: var(--navy);
+      padding: 18px;
+    }
+    .contact-card h3 {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+    }
+    .contact-card p { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 12px; }
+    .contact-btn {
+      display: block;
+      background: var(--gold);
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      margin-bottom: 6px;
+    }
+    .contact-btn:hover { background: var(--gold-light); text-decoration: none; color: #fff; }
+    .contact-btn-sub {
+      display: block;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 9px;
+      font-size: 12px;
+      text-decoration: none;
+    }
+    .contact-btn-sub:hover { background: rgba(255,255,255,0.13); text-decoration: none; color: #fff; }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--navy-deep);
+      color: rgba(255,255,255,0.52);
+      border-top: 3px solid var(--gold);
+    }
+    .footer-main {
+      padding: 40px 0 32px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 32px;
+    }
+    .footer-brand .name {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      display: block;
+      margin-bottom: 3px;
+      letter-spacing: 0.05em;
+    }
+    .footer-brand .en {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .footer-brand p { font-size: 12px; line-height: 1.9; }
+    .footer-col h4 {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 10px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-col ul li { border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .footer-col ul li a {
+      display: block;
+      padding: 7px 0;
+      font-size: 12px;
+      color: rgba(255,255,255,0.48);
+      text-decoration: none;
+    }
+    .footer-col ul li a::before { content: "・"; }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+    }
+    .footer-bottom small { opacity: 0.42; }
+
+    /* ── Page-top button ── */
+    .pagetop {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 42px;
+      height: 42px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      z-index: 200;
+      text-decoration: none;
+    }
+    .pagetop.show { opacity: 1; pointer-events: auto; }
+    .pagetop::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid #fff;
+      border-right: 2px solid #fff;
+      transform: rotate(-45deg) translate(2px, 3px);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .page-layout { grid-template-columns: 1fr; }
+      .access-grid { grid-template-columns: 1fr; }
+      .access-cell { border-right: none; border-bottom: 1px solid var(--border-light); }
+      .access-cell:last-child { border-bottom: none; }
+      .footer-main { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 720px) {
+      .header-nav { display: none; }
+      .header-logo { padding-right: 0; border-right: none; }
+      .util-bar-inner { flex-direction: column; gap: 3px; }
+      .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Utility bar ── -->
+  <div class="util-bar">
+    <div class="inner util-bar-inner">
+      <span>岡山県倉敷市児島由加山 駐車場整備構想 公式情報ページ</span>
+      <div class="util-links">
+        <a href="#contact">お問い合わせ</a>
+        <a href="#access">アクセス</a>
+        <a href="#">サイトマップ</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Site header ── -->
+  <header class="site-header" id="siteHeader">
+    <div class="inner header-inner">
+      <a href="#top" class="header-logo">
+        <div class="logo-crest">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3L4 9v12h5v-6h6v6h5V9z"/>
+            <circle cx="12" cy="7.5" r="1.1" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="logo-texts">
+          <span class="logo-ja">由加山 駐車場構想</span>
+          <span class="logo-en">Kojima Yugasan Parking Project</span>
+        </div>
+      </a>
+      <nav class="header-nav" aria-label="グローバルナビゲーション">
+        <a href="#about">構想概要</a>
+        <a href="#news">お知らせ</a>
+        <a href="#report">活動報告</a>
+        <a href="#schedule">進捗状況</a>
+        <a href="#access">アクセス</a>
+        <a href="#contact" class="nav-cta">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ── Page hero ── -->
+    <div class="page-hero">
+      <div class="inner page-hero-inner">
+        <div class="page-hero-tag">Official Information</div>
+        <h1>児島 由加山エリア<br>駐車場整備構想</h1>
+        <p class="page-hero-desc">
+          由加山の参拝・観光体験をより快適にする駐車場整備構想。地域の景観と調和し、来訪者にとって安心で心地よい受け入れ環境を目指します。
+        </p>
+        <div class="page-hero-meta">
+          <span class="meta-badge phase">■ 構想・検討段階（Phase 1）</span>
+          <span class="meta-badge date">最終更新：令和8年6月10日</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Breadcrumb ── -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <div class="inner">
+        <ol>
+          <li><a href="#">ホーム</a></li>
+          <li><a href="#">プロジェクト情報</a></li>
+          <li>由加山 駐車場整備構想</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ── Page body ── -->
+    <div class="page-body">
+      <div class="inner">
+        <div class="page-layout">
+
+          <!-- ===== MAIN COLUMN ===== -->
+          <div class="main-col">
+
+            <!-- Concept -->
+            <div class="section-box" id="about">
+              <div class="box-header">
+                <h2>■ 構想概要</h2>
+                <span class="box-en">Concept</span>
+              </div>
+              <div class="box-body">
+                <p style="font-size:13px;color:var(--text-mid);line-height:2;margin-bottom:18px;">
+                  由加山の魅力を損なうことなく、来訪者にとっての導線の明快さと、地域にとっての公共性を両立する計画を目指します。景観・利便性・地域経済の三つの観点から構想を整理しています。
+                </p>
+                <table class="concept-table">
+                  <tbody>
+                    <tr>
+                      <td class="concept-num">01</td>
+                      <td>
+                        <div class="concept-head">来訪体験の向上</div>
+                        <div class="concept-body">初めて訪れる方にとっても、どこに停め、どこへ向かえばよいかが直感的にわかる導線設計。参道・境内へのつながりを考慮した、心地よい受け入れ環境を構想します。</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="concept-num">02</td>
+                      <td>
+                        <div class="concept-head">地域との接続・回遊性の向上</div>
+                        <div class="concept-body">駐車場を単なる駐車スペースではなく、参拝・観光・地域の買い物へと自然につながる起点として位置づけ。由加山周辺の回遊性と地域経済の活性化に貢献します。</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="concept-num">03</td>
+                      <td>
+                        <div class="concept-head">景観・歴史との調和</div>
+                        <div class="concept-body">由加山らしい落ち着いた景観を損なわず、自然環境と共存するデザインを前提とします。歴史ある参道の佇まいを尊重し、公共性と美観の両立を追求します。</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Background -->
+            <div class="section-box">
+              <div class="box-header">
+                <h2>■ 構想の背景と課題認識</h2>
+                <span class="box-en">Background</span>
+              </div>
+              <div class="reason-item">
+                <div class="reason-num">1</div>
+                <div class="reason-content">
+                  <div class="reason-title">来訪導線の明確化</div>
+                  <div class="reason-desc">初めて訪れる方が迷わず目的地にたどり着けるよう、わかりやすい駐車・歩行導線の整備が求められています。現状では、案内表示の不足により参拝者が迷うケースが報告されています。</div>
+                </div>
+              </div>
+              <div class="reason-item">
+                <div class="reason-num">2</div>
+                <div class="reason-content">
+                  <div class="reason-title">繁忙期の受け入れ体制整備</div>
+                  <div class="reason-desc">祭事や観光シーズンにおける滞留や混雑を減らし、安全で快適な受け入れ環境をつくることが地域課題となっています。</div>
+                </div>
+              </div>
+              <div class="reason-item">
+                <div class="reason-num">3</div>
+                <div class="reason-content">
+                  <div class="reason-title">エリア全体の回遊性創出</div>
+                  <div class="reason-desc">駐車場を起点として参拝・観光・買い物など、由加山エリア全体を楽しむ動線を設計することで、地域経済の活性化を図ります。</div>
+                </div>
+              </div>
+              <div class="reason-item">
+                <div class="reason-num">4</div>
+                <div class="reason-content">
+                  <div class="reason-title">持続可能な地域インフラの形成</div>
+                  <div class="reason-desc">景観と公共性を大切にしながら、地域にとって長く価値のあるインフラとして計画を進めることが重要です。</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- News -->
+            <div class="section-box" id="news">
+              <div class="box-header">
+                <h2>■ お知らせ</h2>
+                <span class="box-en">News &amp; Updates</span>
+              </div>
+              <table class="news-table">
+                <tbody>
+                  <tr>
+                    <td class="news-date-cell">令和8年6月10日</td>
+                    <td class="news-tag-cell"><span class="tag tag-concept">構想</span></td>
+                    <td class="news-title-cell"><a href="#">駐車場整備に関する基本構想ページを公開しました</a></td>
+                    <td class="news-arrow">›</td>
+                  </tr>
+                  <tr>
+                    <td class="news-date-cell">令和8年7月2日</td>
+                    <td class="news-tag-cell"><span class="tag tag-meeting">協議</span></td>
+                    <td class="news-title-cell"><a href="#">地域関係者との意見交換会（第2回）を実施予定です</a></td>
+                    <td class="news-arrow">›</td>
+                  </tr>
+                  <tr>
+                    <td class="news-date-cell">令和8年7月25日</td>
+                    <td class="news-tag-cell"><span class="tag tag-info">案内</span></td>
+                    <td class="news-title-cell"><a href="#">来訪動線と周辺案内のたたき台を公開予定です</a></td>
+                    <td class="news-arrow">›</td>
+                  </tr>
+                  <tr>
+                    <td class="news-date-cell">令和8年8月15日</td>
+                    <td class="news-tag-cell"><span class="tag tag-info">案内</span></td>
+                    <td class="news-title-cell"><a href="#">夏季繁忙期の交通状況調査を実施予定です</a></td>
+                    <td class="news-arrow">›</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="more-link-row">
+                <a href="#" class="more-link">お知らせ一覧はこちら ›</a>
+              </div>
+            </div>
+
+            <!-- Report -->
+            <div class="section-box" id="report">
+              <div class="box-header">
+                <h2>■ 活動報告</h2>
+                <span class="box-en">Activity Report</span>
+              </div>
+              <div class="report-item">
+                <div class="report-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="report-meta-line">
+                    <span class="report-date">令和8年6月5日</span>
+                    <span class="report-cat">現地調査</span>
+                  </div>
+                  <div class="report-title">由加山エリア 駐車場現況と交通動線の現地調査を実施</div>
+                  <div class="report-desc">参拝者・観光客の利用動向と周辺交通の課題を整理するための初回現地調査レポートです。</div>
+                </div>
+              </div>
+              <div class="report-item">
+                <div class="report-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="report-meta-line">
+                    <span class="report-date">令和8年5月20日</span>
+                    <span class="report-cat">意見交換</span>
+                  </div>
+                  <div class="report-title">地域関係者との初回意見交換会を実施しました</div>
+                  <div class="report-desc">由加山周辺の地域団体・事業者の方々を交え、駐車環境の課題と要望を共有しました。</div>
+                </div>
+              </div>
+              <div class="report-item">
+                <div class="report-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="report-meta-line">
+                    <span class="report-date">令和8年4月28日</span>
+                    <span class="report-cat">景観検討</span>
+                  </div>
+                  <div class="report-title">景観配慮ガイドラインの素案を作成中です</div>
+                  <div class="report-desc">由加山の歴史的景観と調和する駐車場設計のための検討資料をまとめています。</div>
+                </div>
+              </div>
+              <div class="more-link-row">
+                <a href="#" class="more-link">活動報告一覧はこちら ›</a>
+              </div>
+            </div>
+
+            <!-- Schedule -->
+            <div class="section-box" id="schedule">
+              <div class="box-header">
+                <h2>■ プロジェクト進捗状況</h2>
+                <span class="box-en">Progress &amp; Schedule</span>
+              </div>
+              <div class="phase-note">
+                段階的に検討を進め、地域と対話しながら構想を具体化していきます。現在は <strong>Phase 1（現地調査・課題整理）</strong> を実施中です。
+              </div>
+              <table class="phase-table">
+                <tbody>
+                  <tr class="phase-row-active">
+                    <td class="phase-num-cell">
+                      <div class="phase-label">Phase</div>
+                      <div class="phase-badge active">1</div>
+                      <div class="phase-status status-active">● 進行中</div>
+                    </td>
+                    <td>
+                      <div class="phase-title">現地・交通課題の整理</div>
+                      <div class="phase-desc">来訪経路、徒歩導線、繁忙期の交通状況を調査し、課題を整理しています。由加山エリアの現状を正確に把握することから始めます。</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="phase-num-cell">
+                      <div class="phase-label">Phase</div>
+                      <div class="phase-badge">2</div>
+                      <div class="phase-status status-future">○ 予定</div>
+                    </td>
+                    <td>
+                      <div class="phase-title">基本構想の共有・地域対話</div>
+                      <div class="phase-desc">駐車場の役割、導線計画、景観配慮、回遊性の考え方を可視化し、地域の皆さまと共有・議論を行います。</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="phase-num-cell">
+                      <div class="phase-label">Phase</div>
+                      <div class="phase-badge">3</div>
+                      <div class="phase-status status-future">○ 予定</div>
+                    </td>
+                    <td>
+                      <div class="phase-title">関係者協議・計画調整</div>
+                      <div class="phase-desc">地域、関係団体、協力事業者と連携し、実現可能性の検討と具体的な計画策定を進めます。</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="phase-num-cell">
+                      <div class="phase-label">Phase</div>
+                      <div class="phase-badge">4</div>
+                      <div class="phase-status status-future">○ 予定</div>
+                    </td>
+                    <td>
+                      <div class="phase-title">整備計画の策定・実行</div>
+                      <div class="phase-desc">確定した計画に基づき、設計・施工を進め、由加山への新たな受け入れ環境を実現します。</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Access -->
+            <div class="section-box" id="access">
+              <div class="box-header box-header-gold">
+                <h2>■ 由加山へのアクセス</h2>
+                <span class="box-en" style="color:rgba(255,255,255,0.55);">Access</span>
+              </div>
+              <div class="access-grid">
+                <div class="access-cell">
+                  <div class="access-cell-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4-4 8-7.5 8-12a8 8 0 10-16 0c0 4.5 4 8 8 12z"/><circle cx="12" cy="10" r="3"/></svg>
+                    所在地
+                  </div>
+                  <p>〒711-0901<br>岡山県倉敷市児島由加2852番地<br>（由加神社本宮 付近）</p>
+                </div>
+                <div class="access-cell">
+                  <div class="access-cell-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    お車でのアクセス
+                  </div>
+                  <p>瀬戸中央自動車道「児島IC」より約15分。<br>ナビ検索：<strong>「倉敷市児島由加3335」</strong><br>表参道第一駐車場前まで案内されます。</p>
+                </div>
+                <div class="access-cell">
+                  <div class="access-cell-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    周辺のご案内
+                  </div>
+                  <p>由加神社本宮、蓮台寺、参道の名物あんころ餅、児島地区の観光スポットなど、由加山周辺には多くの見どころがあります。</p>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /main-col -->
+
+          <!-- ===== SIDEBAR ===== -->
+          <aside class="sidebar">
+
+            <div class="side-box">
+              <div class="side-box-hd"><h3>▶ 今後の予定</h3></div>
+              <div class="side-box-bd">
+                <div class="upcoming-item">
+                  <div class="upcoming-date">令和8年7月上旬</div>
+                  <div class="upcoming-title">地域関係者との意見交換会（第2回）</div>
+                </div>
+                <div class="upcoming-item">
+                  <div class="upcoming-date">令和8年7月下旬</div>
+                  <div class="upcoming-title">来訪動線・周辺案内の検討資料 公開</div>
+                </div>
+                <div class="upcoming-item">
+                  <div class="upcoming-date">令和8年8月中旬</div>
+                  <div class="upcoming-title">夏季繁忙期の交通状況調査</div>
+                </div>
+                <div class="upcoming-item">
+                  <div class="upcoming-date">令和8年秋頃</div>
+                  <div class="upcoming-title">基本構想案のとりまとめ</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-card" id="contact">
+              <h3>お問い合わせ</h3>
+              <p>構想に関するご相談・連携のご提案・取材のご依頼など、お気軽にご連絡ください。</p>
+              <a href="mailto:info@example.com" class="contact-btn">メールでお問い合わせ</a>
+              <a href="#top" class="contact-btn-sub">ページ上部へ戻る ↑</a>
+            </div>
+
+            <div class="side-box">
+              <div class="side-box-hd"><h3>▶ 関連情報</h3></div>
+              <div class="side-box-bd">
+                <div class="quick-links">
+                  <a href="#">由加神社本宮について</a>
+                  <a href="#">周辺観光・回遊案内</a>
+                  <a href="#">交通・アクセス詳細</a>
+                  <a href="#">駐車場計画の背景</a>
+                  <a href="#">協力・連携のお願い</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="side-box">
+              <div class="side-box-hd"><h3>▶ アクセス概要</h3></div>
+              <div class="side-box-bd">
+                <dl class="access-dl">
+                  <dt>所在地</dt>
+                  <dd>岡山県倉敷市児島由加2852番地</dd>
+                  <dt>最寄IC</dt>
+                  <dd>児島IC（瀬戸中央道）より約15分</dd>
+                  <dt>ナビ住所</dt>
+                  <dd>倉敷市児島由加3335</dd>
+                </dl>
+              </div>
+            </div>
+
+          </aside>
+
+        </div><!-- /page-layout -->
+      </div><!-- /inner -->
+    </div><!-- /page-body -->
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="inner">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <span class="name">由加山 駐車場プロジェクト</span>
+          <span class="en">Kojima Yugasan Parking Project</span>
+          <p>由加山の参拝・観光体験をより快適にする駐車場整備構想。地域の景観と調和し、来訪者にとって安心で心地よい受け入れ環境を目指します。</p>
+        </div>
+        <div class="footer-col">
+          <h4>ページ内容</h4>
+          <ul>
+            <li><a href="#about">構想概要</a></li>
+            <li><a href="#about">構想の背景</a></li>
+            <li><a href="#news">お知らせ</a></li>
+            <li><a href="#report">活動報告</a></li>
+            <li><a href="#schedule">進捗状況</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>その他</h4>
+          <ul>
+            <li><a href="#access">アクセス</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+            <li><a href="#">関連情報</a></li>
+            <li><a href="#">サイトマップ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <small>© 児島由加山 駐車場プロジェクト　All Rights Reserved.</small>
+        <small>※ 本ページは構想段階のデザインサンプルです</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Page-top button ── -->
+  <a href="#top" class="pagetop" id="pagetop" aria-label="ページ上部へ戻る"></a>
+
+  <script>
+    const pagetop = document.getElementById('pagetop');
+    window.addEventListener('scroll', () => {
+      pagetop.classList.toggle('show', window.scrollY > 300);
+    }, { passive: true });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id === '#') return;
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          const offset = document.getElementById('siteHeader').offsetHeight + 8;
+          window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

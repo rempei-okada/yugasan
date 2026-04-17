@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>由加山 駐車場を良くするプロジェクト｜児島由加山</title>
+  <meta name="description" content="岡山・由加山をもっと訪れやすく。参拝・観光のための駐車場整備を地域みんなで考えるプロジェクトです。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf9f5;
+      --bg-alt: #f3f0e8;
+      --base: #ffffff;
+      --text: #1e1e1c;
+      --text-light: #555450;
+      --muted: #888580;
+      --line: #e0dbd0;
+      --line-light: #ece8de;
+      --green: #2e6b42;
+      --green-deep: #1e4d30;
+      --green-mid: #3d8055;
+      --green-soft: #e6f2eb;
+      --gold: #c4922a;
+      --gold-soft: #fdf5e4;
+      --gold-pale: #fff8e8;
+      --blush: #f7ece8;
+      --red-soft: #e87060;
+      --shadow-sm: 0 1px 4px rgba(30,30,28,0.06);
+      --shadow: 0 4px 20px rgba(30,30,28,0.08);
+      --shadow-lg: 0 12px 48px rgba(30,30,28,0.10);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --radius-pill: 999px;
+      --max: 1100px;
+      --serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+      --sans: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: var(--sans);
+      font-weight: 400;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.9;
+      font-size: 15px;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; transition: color 0.25s; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Header ── */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+
+    .site-header .logo-text .main,
+    .site-header .logo-text .sub,
+    .site-header .gnav a,
+    .site-header .nav-toggle span {
+      color: rgba(255,255,255,0.95);
+      transition: color 0.4s;
+    }
+    .site-header .gnav a:hover { color: #fff; }
+
+    .site-header.is-scrolled {
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 1px 0 var(--line), 0 2px 12px rgba(30,30,28,0.06);
+      backdrop-filter: blur(16px);
+    }
+    .site-header.is-scrolled .logo-text .main { color: var(--text); }
+    .site-header.is-scrolled .logo-text .sub { color: var(--muted); }
+    .site-header.is-scrolled .gnav a { color: var(--text-light); }
+    .site-header.is-scrolled .gnav a:hover { color: var(--green); }
+    .site-header.is-scrolled .nav-toggle span { background: var(--text); }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 68px;
+    }
+
+    .logo { display: flex; align-items: center; gap: 12px; }
+
+    .logo-mark {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--green), var(--green-mid));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(46,107,66,0.35);
+    }
+    .logo-mark svg { width: 22px; height: 22px; }
+
+    .logo-text { display: flex; flex-direction: column; line-height: 1.3; }
+    .logo-text .main {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.05em;
+      color: var(--text);
+    }
+    .logo-text .sub {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .gnav { display: flex; align-items: center; gap: 24px; }
+    .gnav a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      position: relative;
+      padding: 4px 0;
+    }
+    .gnav a::after {
+      content: "";
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 2px;
+      background: var(--green);
+      border-radius: 2px;
+      transition: width 0.25s ease;
+    }
+    .gnav a:hover::after { width: 100%; }
+
+    .gnav-cta {
+      display: inline-flex;
+      align-items: center;
+      height: 36px;
+      padding: 0 20px;
+      border-radius: var(--radius-pill);
+      background: var(--green);
+      color: #fff !important;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      transition: background 0.25s, box-shadow 0.25s;
+      box-shadow: 0 2px 8px rgba(46,107,66,0.3);
+    }
+    .gnav-cta::after { display: none !important; }
+    .gnav-cta:hover { background: var(--green-deep); box-shadow: 0 4px 16px rgba(46,107,66,0.4); }
+
+    /* ── Mobile Nav ── */
+    .nav-toggle {
+      display: none;
+      width: 44px; height: 44px;
+      border: none; background: none;
+      cursor: pointer; position: relative; z-index: 110;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text);
+      margin: 5px auto;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+    .mobile-nav.is-open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.05em;
+    }
+    .mobile-nav a:hover { color: var(--green); }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #162b1c;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://yugasan.or.jp/wp-content/uploads/footer-img-min.jpg') center/cover no-repeat;
+      transition: transform 10s ease-out;
+      transform: scale(1.05);
+      will-change: transform;
+    }
+    .hero.loaded .hero-bg { transform: scale(1); }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg,
+        rgba(8, 22, 12, 0.90) 0%,
+        rgba(14, 28, 18, 0.72) 55%,
+        rgba(8, 18, 12, 0.50) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 140px 0 100px;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      background: rgba(196,146,42,0.2);
+      border: 1px solid rgba(196,146,42,0.5);
+      color: #f2d080;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: clamp(28px, 4vw, 52px);
+      line-height: 1.5;
+      letter-spacing: 0.05em;
+      color: #fff;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: #a8d8b8;
+    }
+
+    .hero-lead {
+      max-width: 540px;
+      font-size: clamp(14px, 1.4vw, 16px);
+      line-height: 2.1;
+      color: rgba(255,255,255,0.80);
+      margin-bottom: 40px;
+    }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 50px;
+      padding: 0 28px;
+      border-radius: var(--radius-pill);
+      border: none;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary { background: #fff; color: var(--green-deep); }
+    .btn-primary:hover { background: #f0ede6; box-shadow: 0 6px 20px rgba(0,0,0,0.15); transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.55); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.8); }
+    .btn-green { background: var(--green); color: #fff; box-shadow: 0 4px 14px rgba(46,107,66,0.35); }
+    .btn-green:hover { background: var(--green-deep); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(46,107,66,0.4); }
+    .btn-outline-green { background: transparent; color: var(--green); border: 1.5px solid var(--green); }
+    .btn-outline-green:hover { background: var(--green); color: #fff; }
+    .btn-gold { background: var(--gold); color: #fff; box-shadow: 0 4px 14px rgba(196,146,42,0.3); }
+    .btn-gold:hover { background: #a87820; transform: translateY(-1px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.45);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+    }
+    .hero-scroll::after {
+      content: "";
+      width: 1px;
+      height: 32px;
+      background: rgba(255,255,255,0.25);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      50%  { transform: scaleY(1); transform-origin: top; }
+      50.1%{ transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ── Stats Bar ── */
+    .stats-bar {
+      background: var(--green);
+      padding: 0;
+    }
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      padding: 28px 20px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+    .stat-num span {
+      font-size: 0.5em;
+      font-weight: 700;
+      opacity: 0.85;
+      vertical-align: super;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.06em;
+      line-height: 1.5;
+    }
+
+    /* ── Section ── */
+    .section { padding: 88px 0; }
+    .section-alt { background: var(--base); }
+    .section-warm { background: var(--gold-pale); }
+    .section-dark {
+      background: linear-gradient(160deg, #1b3224, #253d2e);
+      color: #fff;
+    }
+
+    .section-header {
+      max-width: 640px;
+      margin-bottom: 52px;
+    }
+    .section-header.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .tag-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 28px;
+      padding: 0 14px;
+      border-radius: var(--radius-pill);
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+    .tag-label.gold { background: var(--gold-soft); color: var(--gold); }
+    .tag-label.white { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+
+    h2 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(24px, 3vw, 38px);
+      line-height: 1.5;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+    .section-header p {
+      color: var(--text-light);
+      font-size: 15px;
+      line-height: 2;
+    }
+    .section-dark .section-header p { color: rgba(255,255,255,0.72); }
+
+    /* ── Yugasan Intro ── */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .intro-image {
+      aspect-ratio: 4/3;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: linear-gradient(135deg, #c8dfc8 0%, #a8c8a8 50%, #8ab89a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .intro-image-inner {
+      text-align: center;
+      color: rgba(255,255,255,0.7);
+    }
+    .intro-image-inner svg { width: 64px; height: 64px; margin: 0 auto 12px; opacity: 0.6; }
+    .intro-image-inner p { font-size: 12px; letter-spacing: 0.1em; }
+
+    .intro-img-real {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .intro-text h2 { margin-bottom: 16px; }
+
+    .intro-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+      border-left: 3px solid var(--green);
+    }
+
+    .highlight-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .highlight-item h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2px;
+      color: var(--text);
+    }
+
+    .highlight-item p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ── Concept Cards ── */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .concept-card {
+      background: var(--base);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line-light);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .concept-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--green);
+      border-radius: 4px 4px 0 0;
+    }
+    .concept-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-4px);
+    }
+
+    .concept-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .concept-card h3 {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 0.03em;
+      color: var(--green);
+    }
+    .concept-card p {
+      color: var(--text-light);
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    /* ── Challenge Cards ── */
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .challenge-card {
+      background: var(--base);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: flex;
+      gap: 18px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line-light);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .challenge-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+
+    .challenge-num {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--green-soft);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .challenge-card h3 {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+    .challenge-card p {
+      color: var(--text-light);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    /* ── News ── */
+    .news-list { display: flex; flex-direction: column; gap: 0; }
+
+    .news-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line-light);
+    }
+    .news-item:first-child { padding-top: 0; }
+
+    .news-date {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+      min-width: 95px;
+    }
+
+    .news-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 24px;
+      padding: 0 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .tag-concept { background: var(--green-soft); color: var(--green); }
+    .tag-meeting { background: #e8edf8; color: #2a4a8a; }
+    .tag-info { background: var(--gold-soft); color: var(--gold); }
+
+    .news-title {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .side-box {
+      background: var(--base);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .side-box-head {
+      background: var(--green);
+      padding: 14px 20px;
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+    .side-links { padding: 6px 0; }
+    .side-links li { border-bottom: 1px solid var(--line-light); }
+    .side-links li:last-child { border-bottom: none; }
+    .side-links a {
+      font-size: 13px;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .side-links a::before {
+      content: "▶";
+      font-size: 8px;
+      color: var(--green);
+      flex-shrink: 0;
+    }
+    .side-links a:hover { color: var(--green); background: var(--green-soft); }
+
+    .link-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--green);
+    }
+    .link-more::after { content: " →"; }
+    .link-more:hover { text-decoration: underline; }
+
+    /* ── Report ── */
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .report-card {
+      background: var(--base);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line-light);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .report-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-4px);
+    }
+
+    .report-thumb {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--green-soft), var(--bg-alt));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+
+    .report-body { padding: 20px 22px; }
+    .report-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .report-card h3 {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.65;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .report-card p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.85;
+    }
+
+    /* ── Timeline ── */
+    .schedule-wrap {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 36px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 14px; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--line);
+      border-radius: 2px;
+    }
+
+    .tl-item {
+      position: relative;
+      padding-bottom: 40px;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+
+    .tl-dot {
+      position: absolute;
+      left: -29px; top: 4px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--base);
+      border: 2px solid var(--line);
+      transition: all 0.3s;
+    }
+    .tl-item.is-active .tl-dot {
+      background: var(--green);
+      border-color: var(--green);
+      box-shadow: 0 0 0 5px var(--green-soft);
+      width: 22px; height: 22px;
+      left: -31px; top: 2px;
+    }
+
+    .tl-phase {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .tl-item.is-active .tl-phase { color: var(--green); }
+    .tl-item:not(.is-active) .tl-phase { color: var(--gold); }
+
+    .tl-content h3 {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .tl-content p {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.9;
+    }
+
+    .tl-item.is-active .tl-badge {
+      display: inline-flex;
+      align-items: center;
+      height: 22px;
+      padding: 0 10px;
+      border-radius: var(--radius-pill);
+      background: var(--green);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .schedule-card {
+      background: var(--base);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .schedule-card-head {
+      background: var(--green);
+      padding: 16px 24px;
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .upcoming-item {
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--line-light);
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .upcoming-item:last-child { border-bottom: none; }
+    .upcoming-date {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green);
+      flex-shrink: 0;
+      min-width: 82px;
+    }
+    .upcoming-title {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* ── FAQ ── */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .faq-item {
+      background: var(--base);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line-light);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 24px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .faq-q:hover { background: var(--bg); }
+
+    .faq-q-mark {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--green-soft);
+      color: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 16px;
+    }
+
+    .faq-q-text {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      flex: 1;
+    }
+
+    .faq-arrow {
+      flex-shrink: 0;
+      font-size: 12px;
+      color: var(--muted);
+      transition: transform 0.3s;
+    }
+    .faq-item.is-open .faq-arrow { transform: rotate(180deg); }
+
+    .faq-a {
+      display: none;
+      padding: 0 24px 20px 70px;
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 2;
+      border-top: 1px solid var(--line-light);
+      padding-top: 16px;
+    }
+    .faq-item.is-open .faq-a { display: block; }
+
+    /* ── Access ── */
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .access-map {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #c5d8c0, #a8c4a0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+    .access-map-inner {
+      text-align: center;
+      color: rgba(255,255,255,0.65);
+    }
+    .access-map-inner svg { width: 48px; height: 48px; margin: 0 auto 10px; opacity: 0.5; }
+    .access-map-inner p { font-size: 12px; letter-spacing: 0.1em; }
+
+    .access-info { display: flex; flex-direction: column; gap: 14px; }
+
+    .access-card {
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+    }
+    .access-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #9fc8b0;
+      letter-spacing: 0.12em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .access-card-label::before {
+      content: "";
+      width: 14px; height: 1.5px;
+      background: #9fc8b0;
+      border-radius: 2px;
+    }
+    .access-card p {
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.80);
+    }
+
+    /* ── Voice / Testimonial ── */
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .voice-card {
+      background: var(--base);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line-light);
+      position: relative;
+    }
+    .voice-card::before {
+      content: "\201C";
+      font-family: Georgia, serif;
+      font-size: 64px;
+      color: var(--green-soft);
+      position: absolute;
+      top: 8px; left: 18px;
+      line-height: 1;
+    }
+
+    .voice-text {
+      font-size: 14px;
+      line-height: 2;
+      color: var(--text-light);
+      margin-bottom: 16px;
+      padding-top: 28px;
+    }
+
+    .voice-person {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .voice-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--green-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .voice-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .voice-role {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 88px 0;
+      background: linear-gradient(160deg, var(--green-deep), #2e5c3e);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .cta-inner {
+      position: relative;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .cta-inner h2 { color: #fff; margin-bottom: 16px; }
+    .cta-inner p {
+      color: rgba(255,255,255,0.78);
+      font-size: 15px;
+      line-height: 2;
+      margin-bottom: 40px;
+    }
+
+    .cta-contact-box {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius-lg);
+      padding: 24px 32px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+    .cta-contact-item strong {
+      display: block;
+      font-size: 10px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      margin-bottom: 3px;
+    }
+    .cta-contact-item span {
+      font-size: 14px;
+      color: rgba(255,255,255,0.9);
+    }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-white { background: #fff; color: var(--green-deep); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+    .btn-white:hover { background: #f5f5f5; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.18); }
+    .btn-ghost-white { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.5); }
+    .btn-ghost-white:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.8); }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: #151b14;
+      color: rgba(255,255,255,0.5);
+      padding: 60px 0 36px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 28px;
+    }
+
+    .footer-brand .main {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      display: block;
+      margin-bottom: 4px;
+      letter-spacing: 0.05em;
+    }
+    .footer-brand .sub {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .footer-brand p {
+      margin-top: 14px;
+      font-size: 12px;
+      line-height: 2;
+      max-width: 300px;
+    }
+    .footer-address {
+      margin-top: 16px;
+      font-size: 12px;
+      line-height: 2;
+      color: rgba(255,255,255,0.38);
+    }
+
+    .footer-col-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.25s;
+    }
+    .footer-links a::before {
+      content: "▶";
+      font-size: 7px;
+      color: var(--green-mid);
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.85); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+    }
+    .footer-bottom small { opacity: 0.5; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .concept-grid { grid-template-columns: 1fr; }
+      .intro-grid { grid-template-columns: 1fr; }
+      .voice-grid { grid-template-columns: 1fr 1fr; }
+      .news-grid { grid-template-columns: 1fr; }
+      .report-grid { grid-template-columns: 1fr 1fr; }
+      .schedule-wrap { grid-template-columns: 1fr; }
+      .access-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+    }
+
+    @media (max-width: 768px) {
+      .gnav { display: none; }
+      .nav-toggle { display: block; }
+      .hero-content { max-width: 100%; padding: 110px 0 88px; }
+      .section { padding: 60px 0; }
+      .concept-grid, .report-grid, .voice-grid, .challenge-grid { grid-template-columns: 1fr; }
+      .news-item { flex-wrap: wrap; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .cta-contact-box { flex-direction: column; gap: 16px; text-align: left; }
+      .faq-a { padding: 0 18px 18px 18px; padding-top: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .hero h1 { font-size: clamp(24px, 7vw, 36px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#top" class="logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="main">由加山 駐車場プロジェクト</span>
+          <span class="sub">Yugasan Parking Project</span>
+        </div>
+      </a>
+      <nav class="gnav" aria-label="グローバルナビゲーション">
+        <a href="#about">由加山について</a>
+        <a href="#concept">プロジェクト概要</a>
+        <a href="#news">お知らせ</a>
+        <a href="#schedule">スケジュール</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#contact" class="gnav-cta">ご意見を届ける</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Mobile Nav ── -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#about" class="mobile-link">由加山について</a>
+    <a href="#concept" class="mobile-link">プロジェクト概要</a>
+    <a href="#news" class="mobile-link">お知らせ</a>
+    <a href="#schedule" class="mobile-link">スケジュール</a>
+    <a href="#faq" class="mobile-link">よくある質問</a>
+    <a href="#contact" class="mobile-link">ご意見を届ける</a>
+  </nav>
+
+  <main id="top">
+
+    <!-- ── Hero ── -->
+    <section class="hero" id="heroSection">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <div class="hero-badge">🌿 令和8年度　基本構想（公開版）</div>
+        <h1>由加山をもっと<br><em>訪れやすく、気持ちよく。</em></h1>
+        <p class="hero-lead">
+          岡山・倉敷の名社「由加山」に訪れる方がもっと快適に参拝・観光できるよう、駐車場と周辺環境の整備を地域みんなで考えるプロジェクトです。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#concept">プロジェクトを知る</a>
+          <a class="btn btn-ghost" href="#faq">よくある質問</a>
+        </div>
+      </div>
+      <div class="hero-scroll">スクロール</div>
+    </section>
+
+    <!-- ── About Yugasan ── -->
+    <section class="section section-alt" id="about">
+      <div class="container">
+        <div class="intro-grid">
+          <div class="intro-image reveal">
+            <img
+              src="https://yugasan.or.jp/wp-content/uploads/footer-img-min.jpg"
+              alt="由加山の風景"
+              class="intro-img-real"
+              onerror="this.style.display='none'"
+            />
+            <div class="intro-image-inner" style="position:absolute;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              <p>由加山の風景</p>
+            </div>
+          </div>
+          <div class="intro-text reveal">
+            <div class="tag-label">由加山ってどんな場所？</div>
+            <h2>岡山・倉敷に伝わる<br>1300年の歴史を持つ名社</h2>
+            <p style="color:var(--text-light); font-size:15px; line-height:2; margin-bottom:8px;">
+              由加山は岡山県倉敷市児島にある「由加神社本宮」と「蓮台寺」が共存する、全国的にも珍しい神仏習合の霊山です。縁結び・厄除けのご利益で知られ、初詣や祈祷に多くの方が訪れます。
+            </p>
+            <div class="intro-highlights">
+              <div class="highlight-item">
+                <div class="highlight-icon">⛩️</div>
+                <div>
+                  <h4>縁結び・厄除けの霊山</h4>
+                  <p>備前・備中を代表する格式ある神社で、古くから信仰を集めています。</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <div class="highlight-icon">🍡</div>
+                <div>
+                  <h4>名物「あんころ餅」の参道</h4>
+                  <p>参道には老舗のあんころ餅店が軒を連ね、参拝の楽しみのひとつです。</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <div class="highlight-icon">🌊</div>
+                <div>
+                  <h4>瀬戸内の絶景も近い</h4>
+                  <p>周辺には児島・鷲羽山など瀬戸内の観光スポットが点在しています。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Concept ── -->
+    <section class="section" id="concept">
+      <div class="container">
+        <div class="section-header center reveal">
+          <div class="tag-label">プロジェクトの3つの目標</div>
+          <h2>来訪者も地域も、みんなが<br>うれしくなる駐車場へ</h2>
+          <p>駐車場整備を単なるインフラ工事にとどめず、由加山エリア全体の魅力を引き出すきっかけにしたいと考えています。</p>
+        </div>
+        <div class="concept-grid">
+          <article class="concept-card reveal">
+            <div class="concept-num">01</div>
+            <h3>来訪体験の向上</h3>
+            <p>初めて訪れる方にとっても、どこに停め、どこへ向かえばよいかが直感的にわかる導線設計。参道・境内へのつながりを考慮した、心地よい受け入れ環境を構想します。</p>
+          </article>
+          <article class="concept-card reveal">
+            <div class="concept-num">02</div>
+            <h3>地域との接続</h3>
+            <p>駐車場を単なる駐車スペースではなく、参拝・観光・地域の買い物へと自然につながる起点として位置づけ。由加山周辺の回遊性と地域経済の活性化に貢献します。</p>
+          </article>
+          <article class="concept-card reveal">
+            <div class="concept-num">03</div>
+            <h3>景観との調和</h3>
+            <p>由加山らしい落ち着いた景観を損なわず、自然環境と共存するデザインを前提とします。歴史ある参道の佇まいを尊重し、公共性と美観の両立を追求します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Challenge ── -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="tag-label gold">いまどんな課題がある？</div>
+          <h2>由加山が抱える<br>4つの駐車・交通課題</h2>
+          <p>まずは現状の問題をしっかり把握することから、プロジェクトをスタートしています。</p>
+        </div>
+        <div class="challenge-grid">
+          <div class="challenge-card reveal">
+            <div class="challenge-num">1</div>
+            <div>
+              <h3>「どこに停める？」がわからない</h3>
+              <p>初めて訪れる方が駐車場の場所を把握しにくく、迷ってしまうケースが多く見られます。わかりやすい案内サインと導線整備が必要です。</p>
+            </div>
+          </div>
+          <div class="challenge-card reveal">
+            <div class="challenge-num">2</div>
+            <div>
+              <h3>お正月・繁忙期の大混雑</h3>
+              <p>初詣や祭事シーズンには周辺道路への滞留が発生し、地域住民の方にもご不便をおかけしています。受け入れ能力の強化が課題です。</p>
+            </div>
+          </div>
+          <div class="challenge-card reveal">
+            <div class="challenge-num">3</div>
+            <div>
+              <h3>参拝後の回遊が少ない</h3>
+              <p>せっかく由加山に来ても、周辺のお店や観光スポットに立ち寄る機会が少ない状況です。エリア全体を楽しめる動線づくりが求められています。</p>
+            </div>
+          </div>
+          <div class="challenge-card reveal">
+            <div class="challenge-num">4</div>
+            <div>
+              <h3>将来も続く地域の魅力を守りたい</h3>
+              <p>便利にするだけでなく、由加山の歴史・景観・自然環境と調和した、長く愛されるインフラとして整備することを大切にします。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Voices ── -->
+    <section class="section section-warm">
+      <div class="container">
+        <div class="section-header center reveal">
+          <div class="tag-label gold">地域の声</div>
+          <h2>参拝者・地域の方々の<br>リアルな声</h2>
+          <p>プロジェクトを進めるにあたり、訪問者や地域の方々からいただいた声を大切にしています。</p>
+        </div>
+        <div class="voice-grid">
+          <div class="voice-card reveal">
+            <p class="voice-text">初めて来たとき、駐車場がどこにあるかわからなくて迷いました。スムーズに停められるようになると、もっと気軽に来られるのにと思います。</p>
+            <div class="voice-person">
+              <div class="voice-avatar">👩</div>
+              <div>
+                <div class="voice-name">30代女性</div>
+                <div class="voice-role">倉敷市内在住・初訪問</div>
+              </div>
+            </div>
+          </div>
+          <div class="voice-card reveal">
+            <p class="voice-text">お正月は毎年すごく混雑するので、ちゃんと整備してほしいとずっと思っていました。参道のお店が賑わうようになると嬉しいですね。</p>
+            <div class="voice-person">
+              <div class="voice-avatar">🧓</div>
+              <div>
+                <div class="voice-name">60代男性</div>
+                <div class="voice-role">地元住民・毎年参拝</div>
+              </div>
+            </div>
+          </div>
+          <div class="voice-card reveal">
+            <p class="voice-text">由加山の雰囲気はとても好きなので、駐車場が整備されても自然な景観を壊さないようにしてほしいです。せっかくの歴史ある場所ですから。</p>
+            <div class="voice-person">
+              <div class="voice-avatar">👨</div>
+              <div>
+                <div class="voice-name">40代男性</div>
+                <div class="voice-role">県外からの参拝客</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── News ── -->
+    <section class="section section-alt" id="news">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="tag-label">最新情報</div>
+          <h2>プロジェクトの<br>最新お知らせ</h2>
+          <p>進捗や予定などを随時お届けします。</p>
+        </div>
+        <div class="news-grid reveal">
+          <div>
+            <div class="news-list">
+              <div class="news-item">
+                <span class="news-date">2026年6月10日</span>
+                <span class="news-tag tag-concept">構想</span>
+                <span class="news-title">駐車場整備プロジェクトの公式ページを公開しました</span>
+              </div>
+              <div class="news-item">
+                <span class="news-date">2026年7月2日</span>
+                <span class="news-tag tag-meeting">協議</span>
+                <span class="news-title">地域関係者との意見交換会を実施予定です（詳細は別途ご案内）</span>
+              </div>
+              <div class="news-item">
+                <span class="news-date">2026年7月25日</span>
+                <span class="news-tag tag-info">案内</span>
+                <span class="news-title">来訪動線と周辺案内の検討資料を公開予定です</span>
+              </div>
+              <div class="news-item">
+                <span class="news-date">2026年8月15日</span>
+                <span class="news-tag tag-info">案内</span>
+                <span class="news-title">夏季繁忙期の交通状況調査を実施予定です</span>
+              </div>
+            </div>
+            <a href="#" class="link-more">お知らせをもっと見る</a>
+          </div>
+          <aside>
+            <div class="side-box">
+              <div class="side-box-head">📎 関連情報・資料</div>
+              <ul class="side-links">
+                <li><a href="#">由加神社本宮について</a></li>
+                <li><a href="#">周辺観光・回遊案内</a></li>
+                <li><a href="#">交通・アクセス情報</a></li>
+                <li><a href="#">駐車場計画の背景資料</a></li>
+                <li><a href="#">ご協力・連携のお願い</a></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Report ── -->
+    <section class="section" id="report">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="tag-label">活動報告</div>
+          <h2>いま、何をしているの？<br>活動レポート</h2>
+          <p>プロジェクトの検討状況や調査の記録を公開しています。</p>
+        </div>
+        <div class="report-grid">
+          <article class="report-card reveal">
+            <div class="report-thumb">🔍</div>
+            <div class="report-body">
+              <div class="report-meta">
+                <span>2026年6月5日</span>
+                <span>·</span>
+                <span>現地調査</span>
+              </div>
+              <h3>由加山エリアの駐車場と交通動線を現地調査しました</h3>
+              <p>参拝者・観光客の利用動向と周辺交通の課題を整理するための初回調査レポートです。</p>
+            </div>
+          </article>
+          <article class="report-card reveal">
+            <div class="report-thumb">🤝</div>
+            <div class="report-body">
+              <div class="report-meta">
+                <span>2026年5月20日</span>
+                <span>·</span>
+                <span>意見交換</span>
+              </div>
+              <h3>地域関係者との初回意見交換会を実施しました</h3>
+              <p>由加山周辺の地域団体・事業者の方々と、駐車環境の課題と要望を共有しました。</p>
+            </div>
+          </article>
+          <article class="report-card reveal">
+            <div class="report-thumb">📐</div>
+            <div class="report-body">
+              <div class="report-meta">
+                <span>2026年4月28日</span>
+                <span>·</span>
+                <span>景観検討</span>
+              </div>
+              <h3>景観配慮ガイドラインの素案を作成中です</h3>
+              <p>由加山の歴史的景観に調和する駐車場設計のための検討資料をまとめています。</p>
+            </div>
+          </article>
+        </div>
+        <div style="text-align:center; margin-top:36px;">
+          <a href="#" class="btn btn-outline-green">活動報告をもっと見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Schedule ── -->
+    <section class="section section-alt" id="schedule">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="tag-label">プロジェクトの流れ</div>
+          <h2>これからどう進むの？<br>4つのフェーズ</h2>
+          <p>地域の皆さまと対話しながら、段階的に構想を具体化していきます。</p>
+        </div>
+        <div class="schedule-wrap reveal">
+          <div class="timeline">
+            <div class="tl-item is-active">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <div class="tl-badge">現在進行中</div>
+                <div class="tl-phase">フェーズ 1</div>
+                <h3>現状の把握・課題整理</h3>
+                <p>来訪経路、歩行導線、繁忙期の交通状況を調査し、由加山エリアの現状を正確に把握するところから始めています。</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <div class="tl-phase">フェーズ 2</div>
+                <h3>構想の共有・地域との対話</h3>
+                <p>駐車場の役割や導線計画を可視化し、地域の皆さまとの意見交換・議論を重ねます。</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <div class="tl-phase">フェーズ 3</div>
+                <h3>関係者協議・計画の具体化</h3>
+                <p>地域団体・関係機関と連携し、実現可能な具体的な計画へと落とし込んでいきます。</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <div class="tl-phase">フェーズ 4</div>
+                <h3>整備計画の策定・実行</h3>
+                <p>確定した計画に基づき、設計・施工を進め、由加山への新しい受け入れ環境を実現します。</p>
+              </div>
+            </div>
+          </div>
+          <aside class="schedule-card">
+            <div class="schedule-card-head">📅 今後の主な予定</div>
+            <div class="upcoming-list">
+              <div class="upcoming-item">
+                <div class="upcoming-date">2026年7月上旬</div>
+                <div class="upcoming-title">地域関係者との意見交換会（第2回）</div>
+              </div>
+              <div class="upcoming-item">
+                <div class="upcoming-date">2026年7月下旬</div>
+                <div class="upcoming-title">来訪動線・周辺案内の検討資料 公開</div>
+              </div>
+              <div class="upcoming-item">
+                <div class="upcoming-date">2026年8月中旬</div>
+                <div class="upcoming-title">夏季繁忙期の交通状況調査</div>
+              </div>
+              <div class="upcoming-item">
+                <div class="upcoming-date">2026年秋頃</div>
+                <div class="upcoming-title">基本構想案のとりまとめ（予定）</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header center reveal">
+          <div class="tag-label">よくある質問</div>
+          <h2>気になること、<br>まとめてお答えします</h2>
+          <p>プロジェクトに関してよくいただく質問をまとめました。</p>
+        </div>
+        <div class="faq-list reveal" style="max-width:760px; margin:0 auto;">
+          <div class="faq-item">
+            <div class="faq-q">
+              <div class="faq-q-mark">Q</div>
+              <div class="faq-q-text">このプロジェクトは誰が進めているのですか？</div>
+              <div class="faq-arrow">▼</div>
+            </div>
+            <div class="faq-a">由加山周辺の地域関係者・事業者と連携した「由加山 駐車場整備プロジェクト事務局」が主体となり進めています。地域の声を大切にしながら、段階的に検討を進めています。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              <div class="faq-q-mark">Q</div>
+              <div class="faq-q-text">参道や境内の雰囲気は変わりますか？</div>
+              <div class="faq-arrow">▼</div>
+            </div>
+            <div class="faq-a">由加山の歴史的な景観・雰囲気を最大限守ることを前提に検討を進めています。景観配慮のガイドラインを策定し、自然環境や参道の佇まいと調和したデザインを追求します。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              <div class="faq-q-mark">Q</div>
+              <div class="faq-q-text">意見や要望を伝えることはできますか？</div>
+              <div class="faq-arrow">▼</div>
+            </div>
+            <div class="faq-a">はい、ぜひお聞かせください！ページ下部の「ご意見を届ける」フォームからお送りいただけます。地域の方・参拝者の方・事業者の方、どなたのご意見も大切にしています。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              <div class="faq-q-mark">Q</div>
+              <div class="faq-q-text">整備はいつ頃完成しますか？</div>
+              <div class="faq-arrow">▼</div>
+            </div>
+            <div class="faq-a">現在はフェーズ1（現状把握・課題整理）の段階です。令和8年秋頃を目標に基本構想案をとりまとめ、その後の協議・設計・施工の期間を経て整備を進める予定です。具体的なスケジュールは随時お知らせします。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Access ── -->
+    <section class="section section-dark" id="access">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="tag-label white">交通案内</div>
+          <h2>由加山への<br>アクセスガイド</h2>
+          <p>お車でお越しの際は「岡山県倉敷市児島由加3335」をナビに入力すると、表参道第一駐車場前へ案内されます。</p>
+        </div>
+        <div class="access-grid reveal">
+          <div class="access-map">
+            <div class="access-map-inner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22c4-4 8-7.5 8-12a8 8 0 10-16 0c0 4.5 4 8 8 12z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              <p>地図エリア（準備中）</p>
+            </div>
+          </div>
+          <div class="access-info">
+            <div class="access-card">
+              <div class="access-card-label">所在地</div>
+              <p>〒711-0901<br>岡山県倉敷市児島由加2852番地<br>（由加神社本宮 付近）</p>
+            </div>
+            <div class="access-card">
+              <div class="access-card-label">お車でのアクセス</div>
+              <p>瀬戸中央自動車道「児島IC」より約15分。ナビは「倉敷市児島由加3335」で検索すると表参道第一駐車場前へ案内されます。</p>
+            </div>
+            <div class="access-card">
+              <div class="access-card-label">周辺のおすすめスポット</div>
+              <p>由加神社本宮、蓮台寺、参道の名物あんころ餅、鷲羽山・瀬戸大橋の絶景、児島ジーンズストリートなど見どころが豊富です。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="cta-section" id="contact">
+      <div class="container">
+        <div class="cta-inner reveal">
+          <div class="tag-label white" style="margin:0 auto 20px; width:fit-content;">ご意見・お問い合わせ</div>
+          <h2>あなたの声が、<br>由加山を変える。</h2>
+          <p>参拝者の方・地域の方・事業者の方、どなたのご意見も大切にしています。ご相談・ご提案・取材のご依頼など、お気軽にどうぞ。</p>
+          <div class="cta-contact-box">
+            <div class="cta-contact-item">
+              <strong>担当窓口</strong>
+              <span>由加山 駐車場整備プロジェクト事務局</span>
+            </div>
+            <div class="cta-contact-item">
+              <strong>所在地</strong>
+              <span>〒711-0901　岡山県倉敷市児島由加</span>
+            </div>
+            <div class="cta-contact-item">
+              <strong>受付時間</strong>
+              <span>平日 9:00〜17:00（土日祝を除く）</span>
+            </div>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-white" href="mailto:info@example.com">📮 メールで意見を送る</a>
+            <a class="btn btn-ghost-white" href="#top">ページ上部へ戻る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="main">由加山 駐車場整備プロジェクト</span>
+          <span class="sub">Yugasan Parking Development Project</span>
+          <p>由加山の参拝・観光体験をより快適に。地域の景観と調和し、来訪者にとって安心で心地よい受け入れ環境の実現を目指します。</p>
+          <div class="footer-address">
+            〒711-0901　岡山県倉敷市児島由加<br>
+            由加山 駐車場整備プロジェクト事務局<br>
+            ※ 本ページは令和8年6月公開の構想段階の資料です
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">サイトメニュー</div>
+          <div class="footer-links">
+            <a href="#about">由加山について</a>
+            <a href="#concept">プロジェクト概要</a>
+            <a href="#news">最新お知らせ</a>
+            <a href="#report">活動報告</a>
+            <a href="#schedule">スケジュール</a>
+            <a href="#faq">よくある質問</a>
+            <a href="#access">交通案内</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">関連情報</div>
+          <div class="footer-links">
+            <a href="#">由加神社本宮 公式サイト</a>
+            <a href="#">周辺観光・回遊案内</a>
+            <a href="#">交通・アクセス情報</a>
+            <a href="#">駐車場計画の背景資料</a>
+            <a href="#contact">お問い合わせ</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <small>© 児島由加山 駐車場整備プロジェクト事務局　All Rights Reserved.</small>
+        <small>本ページの内容は構想段階のものであり、今後変更される場合があります。</small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Hero zoom animation
+    window.addEventListener('load', () => {
+      document.querySelector('.hero').classList.add('loaded');
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('is-visible'), i * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+        if (mobileNav.classList.contains('is-open')) {
+          mobileNav.classList.remove('is-open');
+        }
+      });
+    });
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    navToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('is-open');
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.faq-item');
+        const isOpen = item.classList.contains('is-open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+        if (!isOpen) item.classList.add('is-open');
+      });
+    });
+  </script>
+
+</body>
+</html>
