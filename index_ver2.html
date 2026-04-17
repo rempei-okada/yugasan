@@ -158,9 +158,9 @@
       color: #fff !important;
       font-size: 13px;
       font-weight: 700;
+          padding: 18px 20px;
       letter-spacing: 0.05em;
       transition: background 0.25s, box-shadow 0.25s;
-      box-shadow: 0 2px 8px rgba(46,107,66,0.3);
     }
     .gnav-cta::after { display: none !important; }
     .gnav-cta:hover { background: var(--green-deep); box-shadow: 0 4px 16px rgba(46,107,66,0.4); }
@@ -223,11 +223,7 @@
 
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(160deg,
-        rgba(8, 22, 12, 0.90) 0%,
-        rgba(14, 28, 18, 0.72) 55%,
-        rgba(8, 18, 12, 0.50) 100%
-      );
+      background: linear-gradient(160deg, rgb(8 22 12 / 75%) 0%, rgb(14 28 18 / 32%) 55%, rgb(8 18 12 / 17%) 100%);
     }
 
     .hero-content {
@@ -1170,6 +1166,8 @@
     .footer-bottom small { opacity: 0.5; }
 
     /* ── Responsive ── */
+
+    /* 1024px: タブレット横 */
     @media (max-width: 1024px) {
       .concept-grid { grid-template-columns: 1fr; }
       .intro-grid { grid-template-columns: 1fr; }
@@ -1183,22 +1181,120 @@
       .footer-inner { grid-template-columns: 1fr; gap: 28px; }
     }
 
+    /* 768px: タブレット縦・大型スマホ */
     @media (max-width: 768px) {
       .gnav { display: none; }
       .nav-toggle { display: block; }
-      .hero-content { max-width: 100%; padding: 110px 0 88px; }
-      .section { padding: 60px 0; }
+
+      .hero-content { max-width: 100%; padding: 96px 0 72px; }
+      .hero-lead { max-width: 100%; font-size: 14px; }
+
+      .section { padding: 52px 0; }
+      .section-header { margin-bottom: 36px; }
+
       .concept-grid, .report-grid, .voice-grid, .challenge-grid { grid-template-columns: 1fr; }
-      .news-item { flex-wrap: wrap; }
+
+      /* ニュースアイテム: 折り返し時に日付+タグを1行目、タイトルを2行目に */
+      .news-item { flex-wrap: wrap; gap: 6px 10px; }
+      .news-title { width: 100%; padding-top: 2px; }
+
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
+
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-      .cta-contact-box { flex-direction: column; gap: 16px; text-align: left; }
+      .cta-contact-box { flex-direction: column; gap: 14px; text-align: left; padding: 20px 24px; }
+      .faq-q { padding: 16px 20px; gap: 12px; }
       .faq-a { padding: 0 18px 18px 18px; padding-top: 14px; }
+
+      /* イントロ画像: スマホで縦長になりすぎないよう比率調整 */
+      .intro-image { aspect-ratio: 16/9; }
     }
 
+    /* 480px: スマホ標準 */
     @media (max-width: 480px) {
+      body { font-size: 14px; }
+
+      /* コンテナ横幅を少し広く取る */
+      .container { width: calc(100% - 32px); }
+
+      .header-inner { height: 60px; }
+
+      .hero-content { padding: 84px 0 56px; }
+      .hero h1 { font-size: clamp(22px, 7vw, 34px); }
+      .hero-lead { font-size: 13px; line-height: 1.9; }
+
+      /* ヒーローボタンを縦積み・全幅に */
+      .hero-actions { flex-direction: column; gap: 10px; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+
+      .section { padding: 44px 0; }
+      .section-header { margin-bottom: 28px; }
+      h2 { font-size: clamp(20px, 6vw, 30px); }
+
+      /* スタッツバー */
       .stats-inner { grid-template-columns: 1fr 1fr; }
-      .hero h1 { font-size: clamp(24px, 7vw, 36px); }
+      .stat-item { padding: 20px 12px; }
+      .stat-num { font-size: clamp(24px, 6vw, 36px); }
+      .stat-label { font-size: 11px; }
+
+      /* コンセプトカード */
+      .concept-card { padding: 24px 20px; }
+
+      /* 課題カード */
+      .challenge-card { padding: 20px; gap: 14px; }
+
+      /* 活動レポート */
+      .report-grid { grid-template-columns: 1fr; }
+      .report-body { padding: 16px 18px; }
+
+      /* FAQ */
+      .faq-q { padding: 14px 16px; gap: 10px; }
+      .faq-q-text { font-size: 14px; }
+      .faq-a { padding: 0 16px 16px 16px; padding-top: 12px; }
+
+      /* CTA */
+      .cta-section { padding: 52px 0; }
+      .cta-contact-box { padding: 16px 18px; gap: 12px; }
+      .cta-actions { flex-direction: column; gap: 10px; }
+      .cta-actions .btn { width: 100%; justify-content: center; }
+
+      /* ボイスカード */
+      .voice-grid { grid-template-columns: 1fr; }
+      .voice-card { padding: 20px; }
+
+      /* アクセス */
+      .access-card { padding: 14px 16px; }
+
+      /* スケジュール */
+      .schedule-card-head { padding: 14px 18px; }
+      .upcoming-item { padding: 12px 18px; gap: 10px; }
+      .upcoming-date { min-width: auto; }
+
+      /* フッター */
+      .site-footer { padding: 48px 0 28px; }
+      .footer-brand p { max-width: 100%; }
+
+      /* 長いテキストの折り返し制御 */
+      .news-title, .challenge-card h3, .challenge-card p,
+      .concept-card p, .report-card h3, .faq-q-text,
+      .access-card p, .footer-address { overflow-wrap: anywhere; }
+    }
+
+    /* 360px: 小型スマホ */
+    @media (max-width: 360px) {
+      .logo-text .main { font-size: 13px; }
+      .logo-text .sub { display: none; }
+
+      /* スタッツを1列に */
+      .stats-inner { grid-template-columns: 1fr; }
+      .stat-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+        padding: 16px 20px;
+      }
+      .stat-item:last-child { border-bottom: none; }
+
+      .hero h1 { font-size: clamp(20px, 7.5vw, 28px); }
+      .hero-lead { font-size: 12.5px; }
     }
   </style>
 </head>
